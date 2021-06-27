@@ -52,8 +52,10 @@ class ArtistaController extends Controller
             'bio'=>'required|max:2000',
         ])->validate();
         
-        $fotito = $this->subirImagen($request);
-        $datos['foto'] = $fotito;
+        $file = $request->file('foto')->store('artistas','s3');
+        Storage::disk('s3')->setVisibility($file,'public');
+        $url = Storage::disk('s3')->url($file);
+        $datos['foto'] = $url;
     
         $artista = new Artista();
         $artista->fill($datos);
@@ -66,20 +68,6 @@ class ArtistaController extends Controller
 
         return response()->json(['message' => ' Artista no agregado'], 500); 
  
-    }
-
-    public function subirImagen($request){
-        if($request->hasFile('foto')){
-            $file = $request->file('foto')->store('artistas','public');
-            Storage::disk('public')->setVisibility($file,'public');
-            $url = Storage::disk('public')->url($file);
-            /* $file = $request->file('foto');
-            $url_imagen = 'images/posts/';
-            $filename = time() . '-' .$file->getClientOriginalName();
-            $uploadosuccess = $request->file('foto')->move($url_imagen, $filename);
-            return "$url_imagen . $filename"; */
-            //$post->imagen = $url_imagen . $filename;
-        }
     }
 
     /**

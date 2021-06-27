@@ -58,8 +58,12 @@ class DiscoController extends Controller
         $disco = new Disco();
         
         $artista = $request->artistas_id;
-        $portada = $this->subirImagen($request);
-        $datos['portada'] = $portada;
+
+        $file = $request->file('portada')->store('discos','s3');
+        Storage::disk('s3')->setVisibility($file,'public');
+        $url = Storage::disk('s3')->url($file);
+
+        $datos['portada'] = $url;
         $datos['artistas_id'] = $artista;
         $disco->fill($datos);
         $res = $disco->save();
@@ -69,20 +73,6 @@ class DiscoController extends Controller
         }
 
         return response()->json(['message' => ' Disco no agregado'], 500);
-    }
-
-    public function subirImagen($request){
-        if($request->hasFile('portada')){
-            $file = $request->file('portada')->store('discos','public');
-            Storage::disk('public')->setVisibility($file,'public');
-            $url = Storage::disk('public')->url($file);
-            /* $file = $request->file('portada');
-            $url_imagen = 'images/posts/';
-            $filename = time() . '-' .$file->getClientOriginalName();
-            $uploadosuccess = $request->file('portada')->move($url_imagen, $filename);
-            return "$url_imagen . $filename"; */
-            //$post->imagen = $url_imagen . $filename;
-        }
     }
 
     /**
