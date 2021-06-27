@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('v1/artista', App\Http\Controllers\Api\v1\ArtistaController::class)->middleware('api');
-Route::apiResource('v1/disco', App\Http\Controllers\Api\v1\DiscoController::class)->middleware('api');
-Route::apiResource('v1/cancion', App\Http\Controllers\Api\v1\CancionController::class)->middleware('api');
+Route::apiResource('v1/artista', App\Http\Controllers\api\v1\ArtistaController::class)->middleware('api');
+Route::apiResource('v1/disco', App\Http\Controllers\api\v1\DiscoController::class)->middleware('api');
+Route::apiResource('v1/cancion', App\Http\Controllers\api\v1\CancionController::class)->middleware('api');
 
 Route::group([
     'middleware' => 'api',
@@ -24,13 +24,13 @@ Route::group([
 
     function ($router){
         //Route::post('login', 'AuthController@login');
-        Route::post('login', [\App\Http\Controllers\Api\v1\AuthController::class, 'login'])-> name('login');
+        Route::post('login', [\App\Http\Controllers\api\v1\AuthController::class, 'login'])-> name('login');
         //Route::post('logout', 'AuthController@logout');
-        Route::post('logout', [\App\Http\Controllers\Api\v1\AuthController::class, 'logout'])-> name('logout');
+        Route::post('logout', [\App\Http\Controllers\api\v1\AuthController::class, 'logout'])-> name('logout');
         //Route::post('refresh', 'AuthController@refresh');
-        Route::post('refresh', [\App\Http\Controllers\Api\v1\AuthController::class, 'refresh'])-> name('refresh');
+        Route::post('refresh', [\App\Http\Controllers\api\v1\AuthController::class, 'refresh'])-> name('refresh');
         //Route::post('me', 'AuthController@me');
-        Route::post('me', [\App\Http\Controllers\Api\v1\AuthController::class, 'me'])-> name('me');
+        Route::post('me', [\App\Http\Controllers\api\v1\AuthController::class, 'me'])-> name('me');
         Route::post('register', 'App\Http\Controllers\Api\v1\RegisterController@store');
     }
 );
