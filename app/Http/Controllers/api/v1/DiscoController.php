@@ -74,7 +74,7 @@ class DiscoController extends Controller
     public function subirImagen($request){
         if($request->hasFile('portada')){
             $file = $request->file('portada')->store('discos','public');
-            Storage::disk('public')->setVisibility($path,'public');
+            Storage::disk('public')->setVisibility($file,'public');
             $url = Storage::disk('public')->url($file);
             /* $file = $request->file('portada');
             $url_imagen = 'images/posts/';

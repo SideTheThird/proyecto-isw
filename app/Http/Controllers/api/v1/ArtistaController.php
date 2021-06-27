@@ -71,7 +71,7 @@ class ArtistaController extends Controller
     public function subirImagen($request){
         if($request->hasFile('foto')){
             $file = $request->file('foto')->store('artistas','public');
-            Storage::disk('public')->setVisibility($path,'public');
+            Storage::disk('public')->setVisibility($file,'public');
             $url = Storage::disk('public')->url($file);
             /* $file = $request->file('foto');
             $url_imagen = 'images/posts/';
