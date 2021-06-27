@@ -8,6 +8,7 @@ use App\Models\Disco;
 use App\Models\Artista;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\DiscoResource;
+use Storage;
 
 class DiscoController extends Controller
 {

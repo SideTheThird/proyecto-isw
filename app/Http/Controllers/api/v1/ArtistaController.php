@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Artista;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\ArtistaResource;
+use Storage;
 
 class ArtistaController extends Controller
 {
