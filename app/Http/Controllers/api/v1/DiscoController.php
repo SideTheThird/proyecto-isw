@@ -90,6 +90,15 @@ class DiscoController extends Controller
         return new DiscoResource($disco);
     }
 
+    public function discosPorArtista($id)
+    {
+        $discos = Disco::where('artistas_id',$id)->get();
+        if($disco == null){
+            return response()->json(['Messagge'=>'Dato no encontrado'], 404);
+        }
+        return new DiscoResource($disco);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
