@@ -19,8 +19,8 @@ class DiscoResource extends JsonResource
         $nombreArtista = Artista::find($this->artistas_id);
 
         return [
-            /* 'id' => $this->id,
-            'artistas_id' => $this->artistas_id, */
+            'id' => $this->id,
+            //'artistas_id' => $this->artistas_id,
             'nombre' => $this->nombre,
             'fecha_lanzamiento' => $this->fecha_lanzamiento,
             'artista' => $nombreArtista->nombre,

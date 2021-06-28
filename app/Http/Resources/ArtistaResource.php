@@ -16,7 +16,7 @@ class ArtistaResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
-            // 'id' => $this->id,
+            'id' => $this->id,
             'nombre' => $this->nombre,
             'foto' => url($this->foto),
             'bio' => $this->bio,

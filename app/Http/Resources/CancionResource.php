@@ -18,8 +18,8 @@ class CancionResource extends JsonResource
         $nombreDisco = Disco::find($this->discos_id);
 
         return [
-            /* 'id' => $this->id,
-            'discos_id' => $this->artistas_id, */
+            'id' => $this->id,
+            //'discos_id' => $this->artistas_id,
             'nombre' => $this->nombre,
             'disco' => $nombreDisco->nombre,
             'letra' => $this->letra,
