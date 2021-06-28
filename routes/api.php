@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('v1/artista', App\Http\Controllers\api\v1\ArtistaController::class)->middleware('api');
 Route::apiResource('v1/disco', App\Http\Controllers\api\v1\DiscoController::class)->middleware('api');
 Route::apiResource('v1/cancion', App\Http\Controllers\api\v1\CancionController::class)->middleware('api');
-Route::get('v1/disco/artista/{artistaId}', 'App\Http\Controllers\api\v1\DiscoController@discosPorArtistas');
+Route::get('v1/disco/artista/{artistaId}', 'App\Http\Controllers\api\v1\DiscoController@discosPorArtistas')->middleware('api');
 
 
 Route::group([
