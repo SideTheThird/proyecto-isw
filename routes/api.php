@@ -19,6 +19,7 @@ Route::apiResource('v1/disco', App\Http\Controllers\api\v1\DiscoController::clas
 Route::apiResource('v1/cancion', App\Http\Controllers\api\v1\CancionController::class)->middleware('api');
 Route::get('v1/disco/artista/{artistaId}', [App\Http\Controllers\api\v1\DiscoController::class, 'discosPorArtista'])->middleware('api');
 Route::get('v1/disco/{discoId}/canciones', [App\Http\Controllers\api\v1\CancionController::class, 'cancionesPorDisco'])->middleware('api');
+Route::get('v1/artista/{artistaId}/canciones', [App\Http\Controllers\api\v1\CancionController::class, 'cancionesPorArtista'])->middleware('api');
 
 
 Route::group([

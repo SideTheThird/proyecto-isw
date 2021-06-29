@@ -9,6 +9,7 @@ use App\Models\Artista;
 use App\Models\Cancion;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\CancionResource;
+use DB;
 
 class CancionController extends Controller
 {
@@ -87,6 +88,19 @@ class CancionController extends Controller
         return CancionResource::collection($canciones);
     }
 
+    public function cancionesPorArtista($id)
+    {
+        $canciones = DB::select('
+            SELECT canciones.* FROM canciones
+            JOIN discos ON discos.id = canciones.discos_id
+            JOIN artistas ON artistas.id = discos.artistas_id
+            WHERE artistas.id = ?', [$id]);
+        if($canciones == null){
+            return response()->json(['Messagge'=>'Dato no encontrado'], 404);
+        }
+        return CancionResource::collection($canciones);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -157,6 +171,6 @@ class CancionController extends Controller
     }
     
     public function __construct() {
-        $this->middleware('auth:api',['except'=>['index','show', 'cancionesPorDisco']]);
+        $this->middleware('auth:api',['except'=>['index','show', 'cancionesPorDisco', 'cancionesPorArtista']]);
     }
 }
