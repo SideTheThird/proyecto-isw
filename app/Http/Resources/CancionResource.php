@@ -15,15 +15,16 @@ class CancionResource extends JsonResource
      */
     public function toArray($request)
     {
-        $nombreDisco = Disco::find($this->discos_id);
+        $disco = Disco::find($this->discos_id);
 
         return [
             'id' => $this->id,
             //'discos_id' => $this->artistas_id,
             'nombre' => $this->nombre,
-            'disco' => $nombreDisco->nombre,
+            'disco' => $disco->nombre,
             'letra' => $this->letra,
             'link' => $this->link,
+            'portada' => url($disco->portada)
         ];
     }
 }
