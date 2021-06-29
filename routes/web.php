@@ -16,5 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('v1/disco/artista/{artistaId}', 'App\Http\Controllers\api\v1\DiscoController@discosPorArtistas')->middleware('api');
