@@ -93,10 +93,10 @@ class DiscoController extends Controller
     public function discosPorArtista($id)
     {
         $discos = Disco::where('artistas_id',$id)->get();
-        if($disco == null){
+        if($discos == null){
             return response()->json(['Messagge'=>'Dato no encontrado'], 404);
         }
-        return new DiscoResource($disco);
+        return new DiscoResource($discos);
     }
 
     /**
