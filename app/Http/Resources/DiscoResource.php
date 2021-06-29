@@ -13,10 +13,10 @@ class DiscoResource extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request, $id)
+    public function toArray($request)
     {
         //return parent::toArray($request);
-        $artista = Artista::find($id);
+        $artista = Artista::find($this->artistas_id);
 
         return [
             'id' => $this->id,

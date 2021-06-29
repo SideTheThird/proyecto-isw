@@ -96,7 +96,7 @@ class DiscoController extends Controller
         if($discos == null){
             return response()->json(['Messagge'=>'Dato no encontrado'], 404);
         }
-        return new DiscoResource($discos, $id);
+        return DiscoResource::collection($discos);
     }
 
     /**
