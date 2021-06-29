@@ -78,6 +78,15 @@ class CancionController extends Controller
         return new CancionResource($cancion);
     }
 
+    public function cancionesPorDisco($id)
+    {
+        $canciones = Cancion::where('discos_id',$id)->get();
+        if($cancion == null){
+            return response()->json(['Messagge'=>'Dato no encontrado'], 404);
+        }
+        return CancionResource::collection($canciones);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
