@@ -87,7 +87,7 @@ class DiscoController extends Controller
         if($disco == null){
             return response()->json(['Messagge'=>'Dato no encontrado'], 404);
         }
-        return new DiscoResource($disco);
+        return new DiscoResource($disco, 0);
     }
 
     public function discosPorArtista($id)
@@ -96,7 +96,7 @@ class DiscoController extends Controller
         if($discos == null){
             return response()->json(['Messagge'=>'Dato no encontrado'], 404);
         }
-        return new DiscoResource($discos);
+        return new DiscoResource($discos, $id);
     }
 
     /**
