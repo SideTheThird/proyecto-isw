@@ -81,7 +81,7 @@ class CancionController extends Controller
     public function cancionesPorDisco($id)
     {
         $canciones = Cancion::where('discos_id',$id)->get();
-        if($cancion == null){
+        if($canciones == null){
             return response()->json(['Messagge'=>'Dato no encontrado'], 404);
         }
         return CancionResource::collection($canciones);
