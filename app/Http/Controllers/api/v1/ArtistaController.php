@@ -49,7 +49,7 @@ class ArtistaController extends Controller
         Validator::make($request->all(),[
             'nombre'=>'required|max:200', 
             'foto'=>'required|max:1024|image',
-            'bio'=>'required|max:2000',
+            'bio'=>'required|max:10000',
         ])->validate();
         
         $file = $request->file('foto')->store('artistas','s3');

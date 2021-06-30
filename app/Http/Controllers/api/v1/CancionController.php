@@ -46,7 +46,7 @@ class CancionController extends Controller
         Validator::make($request->all(),[
             'discos_id'=>'required',
             'nombre'=>'required|max:200', 
-            'letra'=>'required|max:2000',
+            'letra'=>'required|max:10000',
             'link'=>'required|max:1000',
         ])->validate();
         
